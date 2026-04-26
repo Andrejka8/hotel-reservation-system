@@ -18,17 +18,35 @@
         }
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         input[type=number] {
-        -moz-appearance: textfield;
+            -moz-appearance: textfield;
+        }
+        .custom-bg{
+            background-color: #2ec1ac;
+        }
+         .custom-bg:hover{
+            background-color: #279e8c;
+        }
+        .availability-form{
+            margin-top: -50px;
+            z-index: 2;
+            position: relative;
+        }
+
+        @media screen and (max-width: 575px) {
+            .availability-form{
+                margin-top: 25px;
+                padding: 0 35px;
+            }
         }
     </style>
 </head>
 <body class="bg-light">
-
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">AD Hotel</a>
@@ -65,6 +83,7 @@
         </div>
     </nav>
 
+    <!-- Login -->
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -94,6 +113,7 @@
         </div>
     </div>
 
+    <!-- Registration -->
     <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -158,6 +178,7 @@
         </div>
     </div>
 
+    <!-- Carousel -->
     <div class="container-fluid px-lg-4 mt-4">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
@@ -182,6 +203,49 @@
             </div>
         </div>
     </div>
+
+    <!-- Availability -->
+    <div class="container availability-form">
+        <div class="row">
+           <div class="col-lg-12 bg-white shadow p-4 rounded">
+                <h5 class="mb-4">Zkontrolujte dostupnost</h5>
+                <form>
+                    <div class="row align-items-end">
+                        <div class="col-lg-3 mb-3">
+                            <label class="form-label" style="font-weight: 500;">Od</label>
+                            <input type="date" class="form-control shadow-none">
+                        </div>
+                         <div class="col-lg-3 mb-3">
+                            <label class="form-label" style="font-weight: 500;">Do</label>
+                            <input type="date" class="form-control shadow-none">
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label class="form-label" style="font-weight: 500;">Dospělý</label>
+                            <select class="form-select sahow-none">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 mb-3">
+                            <label class="form-label" style="font-weight: 500;">Dítě</label>
+                            <select class="form-select sahow-none">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-1 mb-lg-3 mt-2">
+                            <button type="submit" class="btn text-white shadow-none custom-bg">Potvrdit</button>
+                        </div>
+                    </div>
+                </form>
+           </div> 
+        </div>
+    </div>
+
+<br><br><br>
+<br><br><br>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

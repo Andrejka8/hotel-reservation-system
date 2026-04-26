@@ -29,7 +29,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">AD Hotel</a>
+            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">AD HOTEL</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -518,6 +518,9 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+         <div class="col-lg-12 text-center mt-5">
+            <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Vedět více >>></a>
+        </div>
     </div>
 
     <!-- Reach us -->
@@ -569,9 +572,45 @@
         </div>
     </div>
 
-
-<br><br><br>
-<br><br><br>
+    <!-- Footer -->
+    <div class="container-fluid bg-white mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 p-4 text-center">
+                    <h3 class="h-font fw-bold fs-3 mb-3">AD HOTEL</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Sit magnam tenetur consequatur corrupti accusantium quia
+                        tempora deleniti ut esse ex saepe aperiam, alias nesciunt
+                        quaerat, neque accusamus repellat dolorum impedit.
+                    </p>
+                </div>
+                <div class="col-lg-4 p-4 text-center">
+                    <h5 class="mb-3">Odkazy</h5>
+                    <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Domovská stránka</a> <br>
+                    <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Nabídka pokojů</a> <br>
+                    <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Nabídka vybavení</a> <br>
+                    <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Kontaktujte nás</a> <br>
+                    <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">O nás</a>
+                </div>
+                <div class="col-lg-4 p-4 text-center">
+                    <h5 class="mb-3">Sledujte nás</h5>
+                    <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+                        <i class="bi bi-twitter-x me-1"></i> Twitter
+                    </a>
+                    <br>
+                    <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+                        <i class="bi bi-instagram me-1"></i> Instagram
+                    </a>
+                    <br>
+                    <a href="#" class="d-inline-block text-dark text-decoration-none">
+                        <i class="bi bi-facebook me-1"></i> Facebook
+                    </a>
+                </div>
+            </div>
+        </div>
+    </di>
+    <h6 class="text-center bg-dark text-white p-3 m-0">Vytvořila Andrea Dvořáková</h6>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

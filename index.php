@@ -392,6 +392,35 @@
         </div>
     </div>
 
+    <!-- Features -->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Nabídka vybavení</h2>
+    <div class="container">
+        <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <img src="images/facilities/wifi.svg" width="80px">
+                <h5 class="mt-3">Wi-Fi</h5>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <img src="images/facilities/ac.svg" width="80px">
+                <h5 class="mt-3">Klimatizace</h5>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <img src="images/facilities/massage.svg" width="80px">
+                <h5 class="mt-3">Masáže</h5>
+            </div>
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                <img src="images/facilities/television.svg" width="80px">
+                <h5 class="mt-3">Televize</h5>
+            </div>
+           
+            <div class="col-lg-12 text-center mt-5">
+                <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Další vybavení >>></a>
+            </div>
+        </div>
+    </div>
+
+    
+
 <br><br><br>
 <br><br><br>
 

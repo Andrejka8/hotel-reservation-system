@@ -17,7 +17,7 @@
                     <a class="nav-link me-2" href="facilities.php">Vybavení</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="#">Kontaktuje nás</a>
+                    <a class="nav-link me-2" href="contact.php">Kontaktuje nás</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.php">O nás</a>
@@ -47,7 +47,7 @@
                     <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                        <div class="mb-3">
+                    <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="email" class="form-control shadow-none">
                     </div>

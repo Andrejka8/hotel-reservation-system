@@ -98,7 +98,7 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Apartmán pro 4 osoby</h5>
+                        <h5>Apartmán</h5>
                         <h6 class="mb-4">5000 Kč za noc</h6>
                         <div class="features mb-4">
                             <h6 class="mb-1">Popis</h6>
@@ -128,6 +128,15 @@
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Topení
+                            </span>
+                        </div>
+                        <div class="guests mb-4">
+                            <h6 class="mb-1">Počet lidí</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                5 Dospělých
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                4 Děti
                             </span>
                         </div>
                         <div class="rating mb-4">
@@ -150,7 +159,7 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Apartmán pro 4 osoby</h5>
+                        <h5>Apartmán</h5>
                         <h6 class="mb-4">5000 Kč za noc</h6>
                         <div class="features mb-4">
                             <h6 class="mb-1">Popis</h6>
@@ -180,6 +189,15 @@
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Topení
+                            </span>
+                        </div>
+                        <div class="guests mb-4">
+                            <h6 class="mb-1">Počet lidí</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                5 Dospělých
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                4 Děti
                             </span>
                         </div>
                         <div class="rating mb-4">
@@ -202,7 +220,7 @@
                 <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
-                        <h5>Apartmán pro 4 osoby</h5>
+                        <h5>Apartmán</h5>
                         <h6 class="mb-4">5000 Kč za noc</h6>
                         <div class="features mb-4">
                             <h6 class="mb-1">Popis</h6>
@@ -232,6 +250,15 @@
                             </span>
                             <span class="badge rounded-pill bg-light text-dark text-wrap">
                                 Topení
+                            </span>
+                        </div>
+                        <div class="guests mb-4">
+                            <h6 class="mb-1">Počet lidí</h6>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                5 Dospělých
+                            </span>
+                            <span class="badge rounded-pill bg-light text-dark text-wrap">
+                                4 Děti
                             </span>
                         </div>
                         <div class="rating mb-4">
@@ -251,7 +278,6 @@
                 </div>
             </div>
             
-
             <div class="col-lg-12 text-center mt-5">
                 <a href="#" class="btn btn-sm btn-outline-dark rounded-0 fw-bold shadow-none">Další pokoje >>></a>
             </div>

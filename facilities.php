@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AD Hotel - Vybavení</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    <title>Vybavení | AD Hotel</title>
     <?php require('inc/links.php'); ?>
     <style>
         .pop:hover {

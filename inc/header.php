@@ -20,7 +20,7 @@
                     <a class="nav-link me-2" href="#">Kontaktuje nás</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">O nás</a>
+                    <a class="nav-link" href="about.php">O nás</a>
                 </li>
             </ul>
             <div class="d-flex">

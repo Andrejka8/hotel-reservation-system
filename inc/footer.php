@@ -14,7 +14,7 @@
             <div class="col-lg-4 p-4 text-center">
                 <h5 class="mb-3">Odkazy</h5>
                 <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Domovská stránka</a> <br>
-                <a href="#" class="d-inline-block mb-2 text-dark text-decoration-none">Nabídka pokojů</a> <br>
+                <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Nabídka pokojů</a> <br>
                 <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Nabídka vybavení</a> <br>
                 <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Kontaktujte nás</a> <br>
                 <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">O nás</a>

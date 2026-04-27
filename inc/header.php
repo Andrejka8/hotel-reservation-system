@@ -11,7 +11,7 @@
                     <a class="nav-link active me-2" aria-current="page" href="index.php">Domovská stránka</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="#">Pokoje</a>
+                    <a class="nav-link me-2" href="rooms.php">Pokoje</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-2" href="facilities.php">Vybavení</a>

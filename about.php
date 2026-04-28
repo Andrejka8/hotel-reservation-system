@@ -45,6 +45,7 @@
         </div>
     </div>
 
+    <!-- Valuation -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4 px-4">
@@ -74,8 +75,8 @@
         </div>
     </div>
 
-    <h3 class="my-5 fw-bold h-font text-center">Manažerský tým</h3>
-   
+    <!-- Manager team -->
+    <h3 class="my-5 fw-bold h-font text-center">Manažerský tým</h3> 
     <div class="container px-4">
         <div class="swiper mySwiper">
             <div class="swiper-wrapper mb-5 ">
@@ -111,6 +112,7 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+    
     <?php require('inc/footer.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>

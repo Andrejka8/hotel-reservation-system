@@ -29,6 +29,7 @@
         </p>
     </div>
 
+    <!-- Features -->
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-5 px-4">

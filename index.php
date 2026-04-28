@@ -19,6 +19,15 @@
                 padding: 0 35px;
             }
         }
+        
+        .zoom-effect {
+            transition: all 0.5s; 
+        }
+
+        .zoom-effect:hover {
+            transform: scale(1.03);
+            z-index: 2; 
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -95,7 +104,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                <div class="card border-0 shadow zoom-effect" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5>Apartmán</h5>
@@ -156,7 +165,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                <div class="card border-0 shadow zoom-effect" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5>Apartmán</h5>
@@ -217,7 +226,7 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto">
+                <div class="card border-0 shadow zoom-effect" style="max-width: 350px; margin: auto">
                     <img src="images/rooms/1.jpg" class="card-img-top">
                     <div class="card-body">
                         <h5>Apartmán</h5>
@@ -288,19 +297,19 @@
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Nabídka vybavení</h2>
     <div class="container">
         <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3 zoom-effect">
                 <img src="images/facilities/wifi.svg" width="80px">
                 <h5 class="mt-3">Wi-Fi</h5>
             </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3 zoom-effect">
                 <img src="images/facilities/ac.svg" width="80px">
                 <h5 class="mt-3">Klimatizace</h5>
             </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3 zoom-effect">
                 <img src="images/facilities/massage.svg" width="80px">
                 <h5 class="mt-3">Masáže</h5>
             </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3 zoom-effect">
                 <img src="images/facilities/television.svg" width="80px">
                 <h5 class="mt-3">Televize</h5>
             </div>
@@ -441,19 +450,19 @@
                 
                 <div class="bg-white p-4 rounded">
                     <h5>Sledujte nás</h5>
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="https://x.com/" target="_blank" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                         <i class="bi bi-twitter-x me-1"></i> Twitter
                         </span>
                     </a>
                     <br>
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="https://www.instagram.com/" target="_blank" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                         <i class="bi bi-instagram me-1"></i> Instagram
                         </span>
                     </a>
                     <br>
-                    <a href="#" class="d-inline-block">
+                    <a href="https://www.facebook.com/" target="_blank" class="d-inline-block">
                         <span class="badge bg-light text-dark fs-6 p-2">
                         <i class="bi bi-facebook me-1"></i> Facebook
                         </span>

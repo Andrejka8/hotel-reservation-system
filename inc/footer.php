@@ -21,15 +21,15 @@
             </div>
             <div class="col-lg-4 p-4 text-center">
                 <h5 class="mb-3">Sledujte nás</h5>
-                <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+                <a href="https://x.com/" target="_blank" class="d-inline-block text-dark text-decoration-none mb-3">
                     <i class="bi bi-twitter-x me-1"></i> Twitter
                 </a>
                 <br>
-                <a href="#" class="d-inline-block text-dark text-decoration-none mb-3">
+                <a href="https://www.instagram.com/" target="_blank" class="d-inline-block text-dark text-decoration-none mb-3">
                     <i class="bi bi-instagram me-1"></i> Instagram
                 </a>
                 <br>
-                <a href="#" class="d-inline-block text-dark text-decoration-none">
+                <a href="https://www.facebook.com/" target="_blank" class="d-inline-block text-dark text-decoration-none">
                     <i class="bi bi-facebook me-1"></i> Facebook
                 </a>
             </div>

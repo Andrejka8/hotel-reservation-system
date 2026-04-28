@@ -1,3 +1,7 @@
+<?php
+    require('inc/db_config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,8 @@
     <title>Admin Login Panel</title>
     <?php require('inc/links.php'); ?>
     <style>
-        div.login-form{
+        div.login-form
+        {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -17,19 +22,43 @@
 </head>
 <body class="bg-light">
     <div class="login-form text-center rounded bg-white shadow overflow-hidden">
-        <form>
+        <form method="POST">
             <h4 class="bg-dark text-white py-3">ADMIN LOGIN PANEL</h4>
             <div class="p-4">
                 <div class="mb-3">
-                    <input name="admin_name" type="text" class="form-control shadow-none text-center" placeholder="Jméno">
+                    <input name="admin_name" required type="text" class="form-control shadow-none text-center" placeholder="Jméno">
                 </div>
                 <div class="mb-4">
-                    <input name="admin_pass" type="password" class="form-control shadow-none text-center" placeholder="Heslo">
+                    <input name="admin_pass" required type="password" class="form-control shadow-none text-center" placeholder="Heslo">
                 </div>
                 <button name="login" type="submit" class="btn text-white custom-bg shadow-none">Přihlásit se</button>
             </div>
         </form>
     </div>
+
+    <?php
+
+        if(isset($_POST['login']))
+        {
+            $frm_data = filteration($_POST);
+            $query = "SELECT * FROM `admin_cred` WHERE `admin_name` =? AND `admin_pass` =?";
+            $values = [$frm_data['admin_name'], $frm_data['admin_pass']];
+            $res = select($query, $values, "ss");
+            if($res ->num_rows==1)
+            {
+                echo "Získán uživatel";
+            }
+            else
+            {
+                echo <<<alert
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                alert;
+            }
+        }
+    ?>
 
     <?php require('inc/scripts.php') ;?>
 </body>

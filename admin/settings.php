@@ -94,12 +94,34 @@
                 site_about_inp.value = general_data.site_about;
 
             }
-            
-
             xhr.send('get_general');
         }
 
-        
+        function upd_general(site_title_val, site_about_val)
+        {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function()
+            {
+                var myModal = document.getElementById('general-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if(this.responseText == 1)
+                {
+                    console.log('data updated');
+                    get_general();
+                }
+                else
+                {
+                    console.log("no changes made");
+                }
+            }
+            xhr.send('site_title='+site_title_val+'&site_about='+site_about_val+'&upd_general');
+        }
+
         window.onload = function()
         {
             get_general();

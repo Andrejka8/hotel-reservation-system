@@ -111,12 +111,12 @@
 
                 if(this.responseText == 1)
                 {
-                    console.log('data updated');
+                    alert('success', 'Změny uloženy');
                     get_general();
                 }
                 else
                 {
-                    console.log("no changes made");
+                    alert('error', 'Nebyly provedeny žádné změny');
                 }
             }
             xhr.send('site_title='+site_title_val+'&site_about='+site_about_val+'&upd_general');

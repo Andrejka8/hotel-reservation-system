@@ -64,7 +64,7 @@
                 </div>
 
                  <!-- Shutdown section -->
-                <div class="card border-0 shadow-sm">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <h5 class="card-title m-0">Vypnutí webové stránky</h5>
@@ -121,7 +121,7 @@
                                         <i class="bi bi-twitter-x me-1"></i>
                                         <span id="twitter"></span>
                                     </p>
-                                    <p class="card-text">
+                                    <p class="card-text mb-1">
                                         <i class="bi bi-instagram me-1"></i> 
                                         <span id="insta"></span>
                                     </p>
@@ -145,7 +145,7 @@
     <?php require('inc/scripts.php');?>
 
     <script>
-        let general_data;
+        let general_data, contacts_data;
 
         let general_s_form = document.getElementById('general_s_form');
         let site_title_inp = document.getElementById('site_title_inp');
@@ -240,10 +240,34 @@
             xhr.send('upd_shutdown='+val);
         }
 
+        function get_contacts()
+        {
+            let contacts_p_id = ['address', 'gmap', 'pn1', 'email', 'twitter', 'insta', 'fb'];
+            let iframe =document.getElementById('iframe');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function()
+            {
+                contacts_data = JSON.parse(this.responseText);
+                contacts_data = Object.values(contacts_data);
+                
+                for(i=0; i<contacts_p_id.length; i++)
+                {
+                    document.getElementById(contacts_p_id[i]).innerText = contacts_data[i+1];
+                }
+                iframe.src =contacts_data[8];
+                
+            }
+            xhr.send('get_contacts');
+        }
 
         window.onload = function()
         {
             get_general();
+            get_contacts();
         }
     </script>
 </body>

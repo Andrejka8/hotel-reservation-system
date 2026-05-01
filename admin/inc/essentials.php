@@ -10,8 +10,8 @@
                     window.location.href='index.php';
                 </script>
             ";
+            exit;
         }
-        session_regenerate_id(true);   
     }
     function redirect($url)
     {
@@ -21,6 +21,7 @@
                 window.location.href='$url';
             </script>
         ";
+        exit;
     }
 
     function alert($type, $msg)

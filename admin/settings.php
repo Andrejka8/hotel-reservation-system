@@ -138,6 +138,75 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Contacts details modal -->
+                <div class="modal fade" id="contacts-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <form id="contacts_s_form">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Nastavení kontaktů</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Adresa</label>
+                                                    <input type="text" name="address" id="address_inp" class="form-control shadow-none" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Google mapa</label>
+                                                    <input type="text" name="gmap" id="gmap_inp" class="form-control shadow-none" required>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Telefonní číslo</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                                        <input type="text" name="pn1" id="pn1_inp" class="form-controlm shadow-none" required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Email</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                                        <input type="email" name="email" id="email_inp" class="form-control shadow-none" required>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Sociální sítě</label>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-twitter-x"></i></span>
+                                                        <input type="text" name="twitter" id="twitter_inp" class="form-controlm shadow-none" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-instagram"></i></span>
+                                                        <input type="text" name="insta" id="insta_inp" class="form-controlm shadow-none" required>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text"><i class="bi bi-facebook"></i></span>
+                                                        <input type="text" name="fb" id="fb_inp" class="form-controlm shadow-none" required>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label fw-bold">Vložené okno odkaz</label>
+                                                    <input type="text" name="iframe" id="iframe_inp" class="form-control shadow-none" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" onclick="contacts_inp(contacts_data)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Zavřit</button>
+                                    <button type="submit" class="btn custom-bg text-white shadow-none">Potvrdit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -150,6 +219,7 @@
         let general_s_form = document.getElementById('general_s_form');
         let site_title_inp = document.getElementById('site_title_inp');
         let site_about_inp = document.getElementById('site_about_inp');
+        let contacts_s_form = document.getElementById('contacts_s_form');
 
         function get_general()
         {
@@ -259,9 +329,62 @@
                     document.getElementById(contacts_p_id[i]).innerText = contacts_data[i+1];
                 }
                 iframe.src =contacts_data[8];
+                contacts_inp(contacts_data);
                 
             }
             xhr.send('get_contacts');
+        }
+
+        function contacts_inp(data)
+        {
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'email_inp', 'twitter_inp', 'insta_inp', 'fb_inp', 'iframe_inp'];
+            for (i=0; i<contacts_inp_id.length;i++)
+            {
+                document.getElementById(contacts_inp_id[i]).value = data[i+1];
+            }
+        }
+
+        contacts_s_form.addEventListener('submit', function(e)
+            {
+                e.preventDefault();
+                upd_contacts();
+            }
+        )
+
+        function upd_contacts()
+        {
+            let index = ['address', 'gmap', 'pn1', 'email', 'twitter', 'insta', 'fb', 'iframe'];
+            let contacts_inp_id = ['address_inp', 'gmap_inp', 'pn1_inp', 'email_inp', 'twitter_inp', 'insta_inp', 'fb_inp', 'iframe_inp'];
+
+            let data_str="";
+
+            for(i=0; i<index.length; i++)
+            {
+                data_str += index[i] + "=" + document.getElementById(contacts_inp_id[i]).value + "&";
+            }
+            data_str += "upd_contacts";
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function()
+            {
+                var myModal = document.getElementById('contacts-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+                if(this.responseText == 1)
+                {
+                    alert('success', 'Změny uloženy');
+                    get_contacts();
+                }
+                else
+                {
+                    alert('error', 'Žádné změny nebyly provedeny');
+                }
+            }
+
+            xhr.send(data_str);
         }
 
         window.onload = function()

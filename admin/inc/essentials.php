@@ -1,4 +1,6 @@
 <?php
+    define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT']);
+
     function adminLogin()
     {
         session_start();
@@ -33,5 +35,10 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         alert;
+    }
+
+    function uploadImage($image, $folder)
+    {
+
     }
 ?>

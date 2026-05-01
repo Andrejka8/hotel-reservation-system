@@ -52,5 +52,12 @@
         $res = update($q, $values, 'ssssssssi');
         echo $res;
     }
+
+    if(isset($_POST['add_member']))
+    {
+        $frm_data = filteration($_POST);
+
+        uploadImage($_FILES['picture'], );
+    }
     
 ?>

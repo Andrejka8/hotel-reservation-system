@@ -79,6 +79,65 @@
                         </p>
                     </div>
                 </div>
+
+                <!-- Contact details section -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Nastavení kontaktů</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#contacts-s">
+                                <i class="bi bi-pencil-square"></i> Upravit
+                            </button>
+                        </div>
+                        <div class="row">
+                            <dic class="col-lg-6">
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Adresa</h6>
+                                    <p class="card-text" id="address"></p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Google mapa</h6>
+                                    <p class="card-text" id="gmap"></p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Telefonní číslo</h6>
+                                    <p class="card-text mb-1">
+                                        <i class="bi bi-telephone-fill"></i>
+                                        <span id="pn1"></span>
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Email</h6>
+                                    <p class="card-text" id="email">
+                                        <i class="bi bi-envelope-fill"></i> 
+                                        <span id="em"></span>
+                                    </p>
+                                </div>
+                            </dic>
+                            <div class="col-lg-6">
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Sociální sítě</h6>
+                                    <p class="card-text mb-1">
+                                        <i class="bi bi-twitter-x me-1"></i>
+                                        <span id="twitter"></span>
+                                    </p>
+                                    <p class="card-text">
+                                        <i class="bi bi-instagram me-1"></i> 
+                                        <span id="insta"></span>
+                                    </p>
+                                     <p class="card-text">
+                                        <i class="bi bi-facebook me-1"></i> 
+                                        <span id="fb"></span>
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="card-subtitle mb-1 fw-bold">Vložené okno</h6>
+                                    <iframe id="iframe" class="border p-2 w-100" loading="lazy"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

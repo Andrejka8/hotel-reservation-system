@@ -22,13 +22,6 @@
         </p>
     </div>
 
-    <?php
-        $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
-        $values = [1];
-        $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
-        print_r($contact_r);
-    ?>
-
     <div class="container">
         <div class="row">
             <!-- Map and contact -->
@@ -56,12 +49,9 @@
                         if($contact_r['twitter']!='')
                         {
                             echo <<<data
-                                <a href="$contact_r[twitter]" target="_blank" class="d-inline-block mb-3">
-                                    <span class="badge bg-light text-dark fs-6 p-2">
-                                    <i class="bi bi-twitter-x me-1"></i> Twitter
-                                    </span>
+                                <a href="<?php echo $contact_r[twitter]?>" target="_blank" class="d-inline-block text-dark fs-5 me-2">
+                                    <i class="bi bi-twitter-x me-1"></i>
                                 </a>
-                                <br>
                             data;
                         }
                     ?>

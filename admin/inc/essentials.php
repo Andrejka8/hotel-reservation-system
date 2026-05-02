@@ -1,4 +1,11 @@
 <?php
+
+    //frontend
+    define('SITE_URL', 'http://127.0.0.1/Booking/');
+    define('ABOUT_IMG_PATH', SITE_URL.'images/about/');
+
+
+    //backend upload process
     define('UPLOAD_IMAGE_PATH', $_SERVER['DOCUMENT_ROOT']. '/Booking/images/');
     define('ABOUT_FOLDER', 'about/');
 
@@ -64,6 +71,18 @@
             {
                 return 'upd_failed';
             }
+        }
+    }
+
+    function deleteImage($image, $folder)
+    {
+        if(unlink(UPLOAD_IMAGE_PATH.$folder.$image))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 ?>

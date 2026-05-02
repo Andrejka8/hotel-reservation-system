@@ -212,7 +212,7 @@
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Obecná nastavení</h5>
+                            <h5 class="card-title m-0">Nastavení manažerského týmu</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#team-s">
                                 <i class="bi bi-plus-square"></i> Přidat
                             </button>
@@ -249,6 +249,7 @@
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -436,27 +437,6 @@
             {
                 e.preventDefault();
                 add_member();
-
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", "ajax/settings_crud.php", true);
-
-                xhr.onload = function()
-                {
-                    /*var myModal = document.getElementById('general-s');
-                    var modal = bootstrap.Modal.getInstance(myModal);
-                    modal.hide();
-
-                    if(this.responseText == 1)
-                    {
-                        alert('success', 'Změny uloženy');
-                        get_general();
-                    }
-                    else
-                    {
-                        alert('error', 'Nebyly provedeny žádné změny');
-                    }*/
-                }
-                xhr.send(data);
             }
         )
 
@@ -466,6 +446,38 @@
             data.append('name', member_name_inp.value);
             data.append('picture', member_picture_inp.files[0]);
             data.append('add_member', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/settings_crud.php", true);
+
+            xhr.onload = function()
+            {
+                var myModal = document.getElementById('team-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if(this.responseText == 'inv_img')
+                {
+                    alert('error', 'Pouze JPG a PNG obrázky jsou povoleny');
+                }
+                else if(this.responseText == 'inv_size')
+                {
+                    alert('error', 'Obrázek musí mít m=ně než 2 Mb');
+                }
+                else if(this.responseText == 'upd_failed')
+                {
+                    alert('error', 'Nahrání obrázku selhalo. Server selhal!');
+                }
+                else
+                {
+                    alert('success', 'Nový člen přidán');
+                    member_name_inp.value = '';
+                    member_picture_inp.value = '';
+                    
+                }
+
+            }
+            xhr.send(data);
         }
 
         window.onload = function()

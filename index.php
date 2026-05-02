@@ -425,44 +425,58 @@
     </div>
 
     <!-- Reach us -->
-     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Kontaktujte nás</h2>
-     <div class="container">
+    <?php
+        $contact_q = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+        $values = [1];
+        $contact_r = mysqli_fetch_assoc(select($contact_q, $values, 'i'));
+        print_r($contact_r);
+    ?>
+
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold h-font">Kontaktujte nás</h2>
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
-                <iframe class="w-100 rounded" height="400px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d82507.18991581592!2d13.289570349001426!3d49.74186386558592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470af1e5133d11b7%3A0x31b9406e3fc10b83!2zUGx6ZcWI!5e0!3m2!1scs!2scz!4v1777224372755!5m2!1scs!2scz" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe class="w-100 rounded" height="400px" src="<?php echo $contact_r['iframe']?>" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             
             <div class="col-lg-4 col-md-4 d-flex flex-column gap-4">
-                
                 <div class="bg-white p-4 rounded">
                     <h5>Zavolejte nám</h5>
-                    <a href="tel: +420 123 456 789" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> +420 123 456 789
+                    <a href="tel: +<?php echo $contact_r['pn1']?>" class="d-inline-block text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> +<?php echo $contact_r['pn1']?>
                     </a>
                 </div>
                 
                 <div class="bg-white p-4 rounded">
                     <h5>Napište nám</h5>
-                    <a href="mailto: info@tvujhotel.cz" class="d-inline-block text-decoration-none text-dark">
+                    <a href="mailto: <?php echo $contact_r['email']?>" class="d-inline-block text-decoration-none text-dark">
                         <i class="bi bi-envelope-fill"></i> info@adhotel.cz
                     </a>
                 </div>
                 
                 <div class="bg-white p-4 rounded">
                     <h5>Sledujte nás</h5>
-                    <a href="https://x.com/" target="_blank" class="d-inline-block mb-3">
-                        <span class="badge bg-light text-dark fs-6 p-2">
-                        <i class="bi bi-twitter-x me-1"></i> Twitter
-                        </span>
-                    </a>
-                    <br>
-                    <a href="https://www.instagram.com/" target="_blank" class="d-inline-block mb-3">
+                    <?php
+                        if($contact_r['twitter']!='')
+                        {
+                            echo <<<data
+                                <a href="$contact_r[twitter]" target="_blank" class="d-inline-block mb-3">
+                                    <span class="badge bg-light text-dark fs-6 p-2">
+                                    <i class="bi bi-twitter-x me-1"></i> Twitter
+                                    </span>
+                                </a>
+                                <br>
+                            data;
+                        }
+                    ?>
+                   
+                    <a href="<?php echo $contact_r['insta']?>" target="_blank" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2">
                         <i class="bi bi-instagram me-1"></i> Instagram
                         </span>
                     </a>
                     <br>
-                    <a href="https://www.facebook.com/" target="_blank" class="d-inline-block">
+                    <a href="<?php echo $contact_r['fb']?>" target="_blank" class="d-inline-block">
                         <span class="badge bg-light text-dark fs-6 p-2">
                         <i class="bi bi-facebook me-1"></i> Facebook
                         </span>

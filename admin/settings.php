@@ -163,7 +163,7 @@
                                                     <label class="form-label fw-bold">Telefonní číslo</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="pn1" id="pn1_inp" class="form-controlm shadow-none" required>
+                                                        <input type="number" name="pn1" id="pn1_inp" class="form-controlm shadow-none" required>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
@@ -180,15 +180,15 @@
                                                     <label class="form-label fw-bold">Sociální sítě</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-twitter-x"></i></span>
-                                                        <input type="text" name="twitter" id="twitter_inp" class="form-controlm shadow-none" required>
+                                                        <input type="text" name="twitter" id="twitter_inp" class="form-controlm shadow-none">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-instagram"></i></span>
-                                                        <input type="text" name="insta" id="insta_inp" class="form-controlm shadow-none" required>
+                                                        <input type="text" name="insta" id="insta_inp" class="form-controlm shadow-none">
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text"><i class="bi bi-facebook"></i></span>
-                                                        <input type="text" name="fb" id="fb_inp" class="form-controlm shadow-none" required>
+                                                        <input type="text" name="fb" id="fb_inp" class="form-controlm shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">

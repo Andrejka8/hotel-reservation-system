@@ -103,7 +103,7 @@
         }
     }
 
-    if(isset($_POST['rem-meber']))
+    if(isset($_POST['rem_member']))
     {
         $frm_data = filteration($_POST);
         $values = [$frm_data['rem_member']];

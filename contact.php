@@ -67,30 +67,50 @@
             <!-- Form -->
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 h-100">
-                    <form class="h-100 d-flex flex-column">
+                    <form method="POST" class="h-100 d-flex flex-column">
                         <h5>Napište nám zprávu</h5>
                         <div class="mt-4">
                             <label class="form-label" style="font-weight: 500;">Jméno a příjmení</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="name" required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-4">
                             <label class="form-label" style="font-weight: 500;">Email</label>
-                            <input type="email" class="form-control shadow-none">
+                            <input name="email" required type="email" class="form-control shadow-none">
                         </div>
                          <div class="mt-4">
                             <label class="form-label" style="font-weight: 500;">Téma</label>
-                            <input type="text" class="form-control shadow-none">
+                            <input name="subject" required type="text" class="form-control shadow-none">
                         </div>
                         <div class="mt-4 flex-grow-1 d-flex flex-column">
                             <label class="form-label" style="font-weight: 500;">Zpráva</label>
-                            <textarea class="form-control shadow-none flex-grow-1" style="resize: none;"></textarea>
+                            <textarea name="message" required class="form-control shadow-none flex-grow-1" style="resize: none;"></textarea>
                         </div>
-                        <button type="submit" class="btn text-white custom-bg mt-4 py-2 fs-5">Odeslat zprávu</button>
+                        <button type="submit" name="send" class="btn text-white custom-bg mt-4 py-2 fs-5">Odeslat zprávu</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php
+        if(isset($_POST['send']))
+        {
+            $frm_data = filteration($_POST);
+
+            $q = "INSERT INTO `user_queries`(`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
+            $values = [$frm_data['name'], $frm_data['email'], $frm_data['subject'], $frm_data['message']];
+
+            $res = insert($q, $values, 'ssss');
+            if($res==1)
+            {
+                alert('success', 'Zpráva odeslána');
+            }
+            else
+            {
+                alert('error', 'Výpadek serveru! Zkus znovu později');
+            }
+        }
+    ?>
 
     <?php require('inc/footer.php'); ?>
 </body>

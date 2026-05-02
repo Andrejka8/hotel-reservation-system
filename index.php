@@ -450,7 +450,7 @@
                 <div class="bg-white p-4 rounded">
                     <h5>Napište nám</h5>
                     <a href="mailto: <?php echo $contact_r['email']?>" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-envelope-fill"></i> info@adhotel.cz
+                        <i class="bi bi-envelope-fill"></i> <?php echo $contact_r['email']?>
                     </a>
                 </div>
                 

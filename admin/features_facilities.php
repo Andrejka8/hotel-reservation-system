@@ -88,7 +88,7 @@
                     <div class="card-body">
 
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Popis</h5>
+                            <h5 class="card-title m-0">Vybavení</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#feature-s">
                                 <i class="bi bi-plus-square"></i> Přidat
                             </button>
@@ -100,41 +100,38 @@
                                     <tr class="bg-dark text-light">
                                     <th scope="col">#</th>
                                     <th scope="col">Jméno</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col" width="20%">Téma</th>
-                                    <th scope="col" width="30%">Zpráva</th>
-                                    <th scope="col">Datum</th>
                                     <th scope="col">Akce</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <?php
-                                        $q = "SELECT * FROM `user_queries` ORDER BY `sr_no` DESC";
-                                        $data = mysqli_query($con, $q);
-                                        $i=1;
+                                <tbody id="features-data">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-                                        while($row = mysqli_fetch_assoc($data))
-                                        {
-                                            $seen = '';
-                                            if($row['seen']!=1)
-                                            {
-                                                $seen = "<a href='?seen=$row[sr_no]' class='btn btn-sm rounded-pill btn-primary'>Označit jako přečtené</a>";
-                                            }
-                                            $seen.= "<a href='?del=$row[sr_no]' class='btn btn-sm rounded-pill btn-danger mt-2'>Vymazat</a>";
-                                            echo <<<query
-                                                <tr>
-                                                    <td>$i</td>
-                                                    <td>$row[name]</td>
-                                                    <td>$row[email]</td>
-                                                    <td>$row[subject]</td>
-                                                    <td>$row[message]</td>
-                                                    <td>$row[date]</td>
-                                                    <td>$seen</td>
-                                                </tr>
-                                            query;
-                                            $i++;
-                                        }
-                                    ?>
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body">
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Popis</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#facility-s">
+                                <i class="bi bi-plus-square"></i> Přidat
+                            </button>
+                        </div>
+
+                        <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
+                            <table class="table table-hover border">
+                                <thead class="sticky-top">
+                                    <tr class="bg-dark text-light">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Ikona</th>
+                                    <th scope="col">Jméno</th>
+                                    <th scope="col">Popis</th>
+                                    <th scope="col">Akce</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="facilities-data">
                                 </tbody>
                             </table>
                         </div>
@@ -196,7 +193,7 @@
                 {
                     alert('success', 'Nové vybavení přidáno');
                     feature_s_form.elements['feature_name'].value = '';
-                    //get_members();
+                    get_features();
                 }
                 else
                 {
@@ -207,6 +204,50 @@
             xhr.send(data);
         }
 
+        function get_features()
+        {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function()
+            {
+                document.getElementById('features-data').innerHTML = this.responseText;
+            }
+            xhr.send('get_features');
+        }
+
+        function rem_feature(val)
+        {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function()
+            {
+                if(this.responseText==1)
+                {
+                    alert('success', 'Vybavení vymazáno');
+                    get_features();
+                }
+
+                else if(this.responseText== 'room_added')
+                {
+                    alert('error', 'Vybavení je přídáno do popisu!');
+                }
+
+                else
+                {
+                    alert('error', 'Server selhal');
+                }
+            }
+            xhr.send('rem_feature='+val);
+        }
+
+        window.onload = function()
+        {
+            get_features();
+        }
     </script>
 
 </body>

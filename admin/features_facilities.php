@@ -72,7 +72,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin panel | Dotazy uživatelů</title>
+    <title>Admin panel | Popis a vybavení</title>
     <?php require('inc/links.php'); ?>
 </head>
 <body class="bg-light">
@@ -82,19 +82,19 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">DOTAZY UŽIVATELŮ</h3>
+                <h3 class="mb-4">POPIS A VYBAVENÍ</h3>
 
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
-                        <div class="text-end mb-4">
-                            <a href="?seen=all" class="btn btn-dark rounded-pill shadow-none btn-sm">
-                                <i class="bi bi-check-lg"></i> Označit vše jako přečtené
-                            </a>
-                            <a href="?del=all" class="btn btn-danger rounded-pill shadow-none btn-sm">
-                                <i class="bi bi-trash"></i> Vymazat vše
-                            </a>
+
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <h5 class="card-title m-0">Popis</h5>
+                            <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#feature-s">
+                                <i class="bi bi-plus-square"></i> Přidat
+                            </button>
                         </div>
-                        <div class="table-responsive-md" style="height: 450px; overflow-y: scroll;">
+
+                        <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
                             <table class="table table-hover border">
                                 <thead class="sticky-top">
                                     <tr class="bg-dark text-light">
@@ -140,13 +140,74 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
 
+    <!-- Features modal -->
+    <div class="modal fade" id="feature-s" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="feature_s_form">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Přidat popis</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Jméno</label>
+                            <input type="text" name="feature_name" class="form-control shadow-none" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Zavřit</button>
+                        <button type="submit" class="btn custom-bg text-white shadow-none">Potvrdit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <?php require('inc/scripts.php');?>
+    <script>
+        let feature_s_form =document.getElementById('feature_s_form');
+
+        feature_s_form.addEventListener('submit', function(e)
+        {
+            e.preventDefault();
+            add_feature();
+        });
+
+        function add_feature()
+        {
+            let data = new FormData();
+            data.append('name', feature_s_form.elements['feature_name'].value);
+            data.append('add_feature', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/features_facilities.php", true);
+
+            xhr.onload = function()
+            {
+                var myModal = document.getElementById('feature-s');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if(this.responseText == 1)
+                {
+                    alert('success', 'Nové vybavení přidáno');
+                    feature_s_form.elements['feature_name'].value = '';
+                    //get_members();
+                }
+                else
+                {
+                    alert('error', 'Výpadek serveru');
+                }
+
+            }
+            xhr.send(data);
+        }
+
+    </script>
 
 </body>
 </html>

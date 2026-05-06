@@ -175,11 +175,10 @@ function upd_contacts()
 }
 
 team_s_form.addEventListener('submit', function(e)
-    {
-        e.preventDefault();
-        add_member();
-    }
-)
+{
+    e.preventDefault();
+    add_member();
+});
 
 function add_member()
 {

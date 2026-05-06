@@ -202,7 +202,7 @@ function add_member()
         }
         else if(this.responseText == 'inv_size')
         {
-            alert('error', 'Obrázek musí mít m=ně než 2 Mb');
+            alert('error', 'Obrázek musí mít méně než 2 Mb');
         }
         else if(this.responseText == 'upd_failed')
         {

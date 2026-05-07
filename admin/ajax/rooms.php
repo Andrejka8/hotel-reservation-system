@@ -51,9 +51,84 @@
         else
         {
             $flag = 0;
-            die('query cannot be prepared - isnert');
+            die('query cannot be prepared - insert');
         }
         if($flag)
+        {
+            echo 1;
+        }
+        else
+        {
+            echo 0;
+        }
+    }
+
+    if(isset($_POST['get_all_rooms']))
+    {
+        $res = selectAll('rooms');
+        $i = 1;
+
+        $data = "";
+
+        while($row = mysqli_fetch_assoc($res))
+        {
+            if($row['status']==1)
+            {
+                $status = "<button onclick='toggle_status($row[id],0)' class='btn btn-dark btn-sm shadow-none'>active</button>";
+            }
+            else
+            {
+                $status = "<button onclick='toggle_status($row[id],1)' class='btn btn-warning btn-sm shadow-none'>inactive</button>";
+            }
+
+            $data.= "
+                <tr class='align-middle'>
+                    <td>$i</td>
+                    <td>$row[name]</td>
+                    <td>$row[area] m2</td>
+                    <td>
+                        <span class = 'badge rounded-pill bg-light text-dark'>
+                            Dospělý: $row[adult]
+                        </span>
+                        <span class = 'badge rounded-pill bg-light text-dark'>
+                            Dítě: $row[children]
+                        </span>
+                    </td>
+                    <td>$row[price] Kč</td>
+                    <td>$row[quantity]</td>
+                    <td>$status</td>
+                    <td>
+                        <button type='button' onclick='edit_details($row[id])' class='btn btn-primary shadow-none btn-sm' data-bs-toggle='modal' data-bs-target='#edit-room'>
+                            <i class='bi bi-pencil-square'></i> 
+                        </button>
+                    </td>
+                </tr>
+            ";
+            $i++;
+        }
+        echo $data;
+    }
+
+    if(isset($_POST['get_room']))
+    {
+        $frm_data = filteration($_POST);
+
+        $res1 = select("SELECT * FROM `rooms` WHERE `id`=?", [$frm_data['get_room']], 'i');
+        $res2 = select("SELECT * FROM `room_features` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
+        $res3 = select("SELECT * FROM `room_facilities` WHERE `room_id`=?", [$frm_data['get_room']], 'i');
+
+        $roomdata = mysqli_fetch_assoc($res1);
+
+    }
+
+    if(isset($_POST['toggle_status']))
+    {
+        $frm_data = filteration($_POST);
+
+        $q = "UPDATE `rooms` SET `status`=? WHERE `id` = ?";
+        $v = [$frm_data['value'], $frm_data['toggle_status']];
+
+        if(update($q, $v, 'ii'))
         {
             echo 1;
         }

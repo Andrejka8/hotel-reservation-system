@@ -137,6 +137,6 @@
 
     <?php require('inc/scripts.php');?>
     
-    <script src="scripts/features_facilities.js" ></script>
+    <script src="scripts/features_facilities.js"></script>
 </body>
 </html>

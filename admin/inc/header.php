@@ -17,6 +17,9 @@
                         <a class="nav-link text-white" href="dashboard.php">Dashboard</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="rooms.php">Pokoje</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="features_facilities.php">Popis a vybavení</a>
                     </li>
                     <li class="nav-item">

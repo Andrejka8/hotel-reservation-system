@@ -258,17 +258,13 @@
             data.append('desc', add_room_form.elements['desc'].value);
 
             let features = [];
-            add_room_form.elements['features'].forEach(el =>{
-                if(el.checked){
-                    features.push(el.value);
-                }
+            document.querySelectorAll('#add_room_form input[name="features"]:checked').forEach(el => {
+                features.push(el.value);
             });
 
             let facilities = [];
-            add_room_form.elements['facilities'].forEach(el =>{
-                if(el.checked){
-                    facilities.push(el.value);
-                }
+            document.querySelectorAll('#add_room_form input[name="facilities"]:checked').forEach(el => {
+                facilities.push(el.value);
             });
 
             data.append('features', JSON.stringify(features));
@@ -322,11 +318,89 @@
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
             xhr.onload = function()
-            {
-                
+            {   
+                let data = JSON.parse(this.responseText);
 
+                edit_room_form.elements['name'].value = data.roomdata.name;
+                edit_room_form.elements['area'].value = data.roomdata.area;
+                edit_room_form.elements['price'].value = data.roomdata.price;
+                edit_room_form.elements['quantity'].value = data.roomdata.quantity;
+                edit_room_form.elements['adult'].value = data.roomdata.adult;
+                edit_room_form.elements['children'].value = data.roomdata.children;
+                edit_room_form.elements['desc'].value = data.roomdata.description;
+                edit_room_form.elements['room_id'].value = data.roomdata.id;
+                
+               document.querySelectorAll('#edit_room_form input[name="features"]').forEach(el => 
+               {
+                    if(data.features.includes(Number(el.value))){
+                        el.checked = true;
+                    }
+                });
+
+                document.querySelectorAll('#edit_room_form input[name="facilities"]').forEach(el => 
+                {
+                    if(data.facilities.includes(Number(el.value))){
+                        el.checked = true;
+                    }
+                });
             }
             xhr.send('get_room='+id);
+        }
+
+        edit_room_form.addEventListener('submit', function(e)
+        {
+            e.preventDefault();
+            submit_edit_room();
+        });
+
+        function submit_edit_room()
+        {
+            let data = new FormData();
+            data.append('edit_room', '');
+            data.append('room_id',edit_room_form.elements['room_id'].value);
+            data.append('name', edit_room_form.elements['name'].value);
+            data.append('area', edit_room_form.elements['area'].value);
+            data.append('price', edit_room_form.elements['price'].value);
+            data.append('quantity', edit_room_form.elements['quantity'].value);
+            data.append('adult', edit_room_form.elements['adult'].value);
+            data.append('children', edit_room_form.elements['children'].value);
+            data.append('desc', edit_room_form.elements['desc'].value);
+
+            let features = [];
+            document.querySelectorAll('#edit_room_form input[name="features"]:checked').forEach(el => {
+                features.push(el.value);
+            });
+
+            let facilities = [];
+            document.querySelectorAll('#edit_room_form input[name="facilities"]:checked').forEach(el => {
+                facilities.push(el.value);
+            });
+
+            data.append('features', JSON.stringify(features));
+            data.append('facilities', JSON.stringify(facilities));
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+
+            xhr.onload = function()
+            {
+                var myModal = document.getElementById('edit-room');
+                var modal = bootstrap.Modal.getInstance(myModal);
+                modal.hide();
+
+                if(this.responseText == 1)
+                {
+                    alert('success', 'Informace změněny');
+                    edit_room_form.reset();
+                    get_all_rooms();
+                }
+                else
+                {
+                    alert('error', 'Výpadek serveru');
+                }
+
+            }
+            xhr.send(data);
         }
 
         function toggle_status(id, val)

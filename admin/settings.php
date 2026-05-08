@@ -235,7 +235,7 @@
                                         <label class="form-label fw-bold">Jméno</label>
                                         <input type="text" name="member_name" id="member_name_inp" class="form-control shadow-none" required>
                                     </div>
-                                     <div class="mb-3">
+                                    <div class="mb-3">
                                         <label class="form-label fw-bold">Fotografie</label>
                                         <input type="file" name="member_picture" id="member_picture_inp" accept=".jpg, .png, .webp, .jpeg" class="form-control shadow-none" required>
                                     </div>

@@ -480,15 +480,15 @@
             {
                 if(this.responseText == 'inv_img')
                 {
-                    alert('error', 'Pouze JPG, WEBP a PNG obrázky jsou povoleny');
+                    alert('error', 'Pouze JPG, WEBP a PNG obrázky jsou povoleny', 'image-alert');
                 }
                 else if(this.responseText == 'inv_size')
                 {
-                    alert('error', 'Obrázek musí mít méně než 2 Mb');
+                    alert('error', 'Obrázek musí mít méně než 2 Mb', 'image-alert');
                 }
                 else if(this.responseText == 'upd_failed')
                 {
-                    alert('error', 'Nahrání obrázku selhalo. Server selhal!');
+                    alert('error', 'Nahrání obrázku selhalo. Server selhal!', 'image-alert');
                 }
                 else
                 {
@@ -516,6 +516,32 @@
                 document.getElementById('room-image-data').innerHTML = this.responseText;
             }
             xhr.send('get_room_images='+id);
+        }
+
+        function rem_image(img_id, room_id)
+        {
+            let data = new FormData();
+            data.append('image_id', img_id);
+            data.append('room_id', room_id);
+            data.append('rem_image', '');
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "ajax/rooms.php", true);
+
+            xhr.onload = function()
+            {
+                if(this.responseText == 1)
+                {
+                    alert('success', 'Obrázek vymazán', 'image-alert');
+                    room_images(room_id, document.querySelector("#room-images .modal-title").innerText);
+                }
+                else
+                {
+                    alert('error', 'Vymazání obrázku selhalo', 'image-alert');
+                }
+
+            }
+            xhr.send(data);
         }
 
         window.onload = function()

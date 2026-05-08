@@ -87,7 +87,7 @@
                         $features_data = "";
                         while($fea_row = mysqli_fetch_assoc($fea_q))
                         {
-                            $features_data .="<span class='badge rounded-pill bg-light text-dark text-wrap'>$fea_row[name]</span>"; 
+                            $features_data .="<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>$fea_row[name]</span>"; 
                         }
 
                         //facilities of room
@@ -98,7 +98,7 @@
                         $facilities_data = "";
                         while($fac_row = mysqli_fetch_assoc($fac_q))
                         {
-                            $facilities_data .="<span class='badge rounded-pill bg-light text-dark text-wrap'>$fac_row[name]</span>"; 
+                            $facilities_data .="<span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1'>$fac_row[name]</span>"; 
                         }
 
                         //thumbnail of image
@@ -137,7 +137,7 @@
                                     <div class="col-md-2 mt-lg-0 mt-md-0 mt-4 text-center">
                                         <h6 class="mb-4">$room_data[price]Kč za noc</h6>
                                         <a href="#" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Rezervovat</a>
-                                        <a href="#" class="btn btn-sm w-100 btn-outline-dark shadow-none">Více informací</a>
+                                        <a href="room_details.php?id=$room_data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none">Více informací</a>
                                     </div>
                                 </div>
                             </div>  

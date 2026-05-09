@@ -35,8 +35,8 @@
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
-                                        <th scope="col">Jméno</th>
-                                        <th scope="col">Area</th>
+                                        <th scope="col">Název</th>
+                                        <th scope="col">Rozloha</th>
                                         <th scope="col">Počet lidí</th>
                                         <th scope="col">Cena</th>
                                         <th scope="col">Počet</th>
@@ -65,11 +65,11 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Jméno</label>
+                                <label class="form-label fw-bold">Název</label>
                                 <input type="text" name="name" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Area</label>
+                                <label class="form-label fw-bold">Rozloha</label>
                                 <input type="number" min="1" name="area" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -154,11 +154,11 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Jméno</label>
+                                <label class="form-label fw-bold">Název</label>
                                 <input type="text" name="name" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="form-label fw-bold">Area</label>
+                                <label class="form-label fw-bold">Rozloha</label>
                                 <input type="number" min="1" name="area" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 mb-3">

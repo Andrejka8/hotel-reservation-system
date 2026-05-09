@@ -29,7 +29,7 @@
                         <a class="nav-link text-white" href="carousel.php">Hlavní stránka - slider</a>
                     </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="settings.php">Settings</a>
+                        <a class="nav-link text-white" href="settings.php">Nastavení</a>
                     </li>
                     
                 </ul>

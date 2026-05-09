@@ -25,7 +25,7 @@
                     <div class="card-body">
 
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Vybavení</h5>
+                            <h5 class="card-title m-0">Popis</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#feature-s">
                                 <i class="bi bi-plus-square"></i> Přidat
                             </button>
@@ -36,7 +36,7 @@
                                 <thead>
                                     <tr class="bg-dark text-light">
                                     <th scope="col">#</th>
-                                    <th scope="col">Jméno</th>
+                                    <th scope="col">Název</th>
                                     <th scope="col">Akce</th>
                                     </tr>
                                 </thead>
@@ -51,7 +51,7 @@
                     <div class="card-body">
 
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <h5 class="card-title m-0">Popis</h5>
+                            <h5 class="card-title m-0">Vybavení</h5>
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#facility-s">
                                 <i class="bi bi-plus-square"></i> Přidat
                             </button>
@@ -63,7 +63,7 @@
                                     <tr class="bg-dark text-light">
                                     <th scope="col">#</th>
                                     <th scope="col">Ikona</th>
-                                    <th scope="col">Jméno</th>
+                                    <th scope="col">Název</th>
                                     <th scope="col" width="40%">Popis</th>
                                     <th scope="col">Akce</th>
                                     </tr>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Jméno</label>
+                            <label class="form-label fw-bold">Název</label>
                             <input type="text" name="feature_name" class="form-control shadow-none" required>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label fw-bold">Jméno</label>
+                            <label class="form-label fw-bold">Název</label>
                             <input type="text" name="facility_name" class="form-control shadow-none" required>
                         </div>
                             <div class="mb-3">

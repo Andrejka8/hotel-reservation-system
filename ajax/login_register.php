@@ -4,53 +4,67 @@
     require('../inc/PHPMailer/Exception.php');
     require('../inc/PHPMailer/PHPMailer.php');
     require('../inc/PHPMailer/SMTP.php');
+    date_default_timezone_set("Europe/Prague");
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    function send_mail($email, $name, $token)
-{
-    $mail = new PHPMailer(true);
-
-    try {
-        $mail->isSMTP();                                            
-        $mail->Host       = 'smtp.gmail.com';                     
-        $mail->SMTPAuth   = true;                                   
-        $mail->Username   = 'mail'; 
-        $mail->Password   = 'Heslo';    
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
-        $mail->Port       = 587; 
-        
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-                'verify_peer' => false,
-                'verify_peer_name' => false,
-                'allow_self_signed' => true
-            )
-        );
-
-        // Odesílatel a příjemce
-        $mail->setFrom('mail', 'AD Hotel');
-        $mail->addAddress($email, $name);
-
-        // Obsah emailu
-        $mail->isHTML(true);                                  
-        $mail->Subject = 'Overeni uctu - AD Hotel';
-        $mail->Body    = "
-            Klikni na odkaz nize pro potvrzeni registrace: <br>
-            <a href='".SITE_URL."email_confirm.php?email=$email&token=$token'>POTVRDIT EMAIL</a>
-        ";
-
-        $mail->send();
-        return true;
-    } 
-    catch (Exception $e) 
+    function send_mail($email, $token, $type)
     {
-        echo "Mailer Error: {$mail->ErrorInfo}";
-        return false; 
+        if($type == "email_confirmation")
+        {
+            $page = 'email_confirm.php';
+            $subject = "Odkaz na overeni uctu";
+            $content = "potvrzeni emailu";
+        }
+        else
+        {
+            $page = 'index.php';
+            $subject = "Odkaz na resetovani uctu";
+            $content = "resetovani uctu"; 
+        }
+
+        $mail = new PHPMailer(true);
+
+        try {
+            $mail->isSMTP();                                            
+            $mail->Host       = 'smtp.gmail.com';                     
+            $mail->SMTPAuth   = true;                                   
+            $mail->Username   = 'mail'; 
+            $mail->Password   = 'heslo';    
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
+            $mail->Port       = 587; 
+            
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
+
+            // Odesílatel a příjemce
+            $mail->setFrom('mail', 'AD Hotel');
+            $mail->addAddress($email);
+
+            // Obsah emailu
+            $mail->isHTML(true);                                  
+            $mail->Subject = $subject;
+            $mail->Body    = "
+                Klikni na odkaz nize pro $content: <br>
+                <a href='".SITE_URL."$page?$type&email=$email&token=$token'>POTVRDIT EMAIL</a>
+            ";
+
+            $mail->send();
+            return true;
+        } 
+        catch (Exception $e) 
+        {
+            echo "Mailer Error: {$mail->ErrorInfo}";
+            return false; 
+        }
     }
-}
 
 
     if (isset($_POST['register']))
@@ -90,7 +104,7 @@
 
         //send confirmation link to user's email
         $token = bin2hex(random_bytes(16));
-        if(!send_mail($data['email'], $data['name'], $token))
+        if(!send_mail($data['email'], $token, "email_confirmation"))
         {
             echo 'mail_failed';
             exit;
@@ -108,6 +122,96 @@
         else
         {
             echo 'ins_failed';
+        }
+    }
+
+    if (isset($_POST['login']))
+    {
+        $data = filteration($_POST);
+
+        //check user exists or not
+        $u_exist = select("SELECT * FROM `user_cred` WHERE `email`=? OR `phonenum`=? LIMIT 1", [$data['email_mob'], $data['email_mob']], "ss");
+
+        if(mysqli_num_rows($u_exist)==0)
+        {
+            echo 'inv_email_mob';
+        }
+        else
+        {
+            $u_fetch = mysqli_fetch_assoc($u_exist);
+            if($u_fetch['is_verified']==0)
+            {
+                echo 'not_verified';
+            }
+            else if($u_fetch['status']==0)
+            {
+                echo 'inactive';
+            }
+            else
+            {
+                if(!password_verify($data['pass'], $u_fetch['password']))
+                {
+                    echo 'invalid_pass';
+                }
+                else
+                {
+                    session_start();
+                    $_SESSION['login'] = true;
+                    $_SESSION['uId'] = $u_fetch['id'];
+                    $_SESSION['uName'] = $u_fetch['name'];
+                    $_SESSION['uPic'] = $u_fetch['picture'];
+                    $_SESSION['uPhone'] = $u_fetch['phonenum'];
+                    echo 1;
+                }
+            }
+        }
+    }
+
+    if (isset($_POST['forgot_pass']))
+    {
+        $data = filteration($_POST);
+
+        $u_exist = select("SELECT * FROM `user_cred` WHERE `email`=? LIMIT 1", [$data['email']], "s");
+
+        if(mysqli_num_rows($u_exist)==0)
+        {
+            echo 'inv_email';
+        }
+        else
+        {
+            $u_fetch = mysqli_fetch_assoc($u_exist);
+            if($u_fetch['is_verified']==0)
+            {
+                echo 'not_verified';
+            }
+            else if($u_fetch['status']==0)
+            {
+                echo 'inactive';
+            }
+            else
+            {
+                //send reset link to email
+                $token = bin2hex(random_bytes(16));
+                if(!send_mail($data['email'], $token, 'account_recovery'))
+                {
+                    echo 'mail_failed';
+                }
+                else
+                {
+                    $date = date("Y-m-d");
+
+                    $query = mysqli_query($con,"UPDATE `user_cred` SET `token`='$token',`t_expire`='$date' WHERE `id`='$u_fetch[id]'");
+
+                    if($query)
+                    {
+                        echo 1;
+                    }
+                    else
+                    {
+                        echo 'upd_failed';
+                    }
+                }
+            }
         }
     }
 ?>

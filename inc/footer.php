@@ -201,5 +201,55 @@
 
     });
 
+    let forgot_form = document.getElementById('forgot-form');
+
+    forgot_form.addEventListener('submit', (e)=> 
+    {
+        e.preventDefault();
+
+        let data = new FormData();
+
+        data.append('email', forgot_form.elements['email'].value);
+        data.append('forgot_pass', '');
+
+        var myModal = document.getElementById('forgotModal');
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "ajax/login_register.php", true);
+
+        xhr.onload = function()
+        {
+            if(this.responseText == 'inv_email')
+            {
+                alert('error', "Špatný email");
+            }
+            else if(this.responseText == 'not_verified')
+            {
+                alert('error', "Email není ověřený! Prosím kontaktujte admina");
+            }
+            else if(this.responseText == 'inactive')
+            {
+                alert('error', "Účet pozastaven. Prosím kontaktujte admina.");
+            }
+            else if(this.responseText == 'mail_failed')
+            {
+                alert('error', "Nemůžeme poslat email. Server selhal");
+            }
+            else if(this.responseText == 'upd_failed')
+            {
+                alert('error', "Resetování hesla selhalo. Server selhal");
+            }
+            else
+            {
+                alert('success', "Odkaz poslán na email!");
+                forgot_form.reset();
+            }
+        }
+        xhr.send(data);
+
+    });
+
     setActive();
 </script>

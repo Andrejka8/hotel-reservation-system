@@ -3,12 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 p-4 text-center">
-                <h3 class="h-font fw-bold fs-3 mb-3">AD HOTEL</h3>
+                <h3 class="h-font fw-bold fs-3 mb-3"><?php echo $settings_r['site_title'] ?></h3>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Sit magnam tenetur consequatur corrupti accusantium quia
-                    tempora deleniti ut esse ex saepe aperiam, alias nesciunt
-                    quaerat, neque accusamus repellat dolorum impedit.
+                    <?php echo $settings_r['site_about'] ?>
                 </p>
             </div>
             <div class="col-lg-4 p-4 text-center">

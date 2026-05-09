@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vybavení | AD Hotel</title>
     <?php require('inc/links.php'); ?>
+    <title>Vybavení | <?php echo $settings_r['site_title'] ?></title>
+
     <style>
         .pop:hover {
             border-top-color: var(--teal) !important;

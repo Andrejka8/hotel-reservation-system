@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nabídka pokojů | AD Hotel</title>
     <?php require('inc/links.php'); ?>
+    <title>Nabídka pokojů | <?php echo $settings_r['site_title'] ?></title>
 </head>
 
 <body class="bg-light">

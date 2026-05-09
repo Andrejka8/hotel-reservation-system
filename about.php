@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O nás | AD Hotel</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
     <?php require('inc/links.php'); ?>
+    <title>O nás | <?php echo $settings_r['site_title'] ?></title>
     <style>
         .box{
             border-top-color: var(--teal) !important;

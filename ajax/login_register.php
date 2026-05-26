@@ -31,8 +31,8 @@
             $mail->isSMTP();                                            
             $mail->Host       = 'smtp.gmail.com';                     
             $mail->SMTPAuth   = true;                                   
-            $mail->Username   = 'mail'; 
-            $mail->Password   = 'heslo';    
+            $mail->Username   = 'andrejka2007.dvorakova@gmail.com'; 
+            $mail->Password   = 'ozyohpesyxaexmak';    
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;            
             $mail->Port       = 587; 
             
@@ -45,7 +45,7 @@
             );
 
             // Odesílatel a příjemce
-            $mail->setFrom('mail', 'AD Hotel');
+            $mail->setFrom('andrejka2007.dvorakova@gmail.com', 'AD Hotel');
             $mail->addAddress($email);
 
             // Obsah emailu
@@ -212,6 +212,26 @@
                     }
                 }
             }
+        }
+    }
+
+    if (isset($_POST['recover_user']))
+    {
+        $data = filteration($_POST);
+       
+        $enc_pass = password_hash($data['pass'], PASSWORD_BCRYPT);
+
+        $query = "UPDATE `user_cred` SET `password`=? `token`=?,`t_expire`=? WHERE `email`=? AND `token`=?";
+
+        $values = [$enc_pass, null, null, $data['email'], $data['token']];
+
+        if(update($query, $values, 'sssss'))
+        {
+            echo 1;
+        }
+        else
+        {
+            echo 'failed';
         }
     }
 ?>
